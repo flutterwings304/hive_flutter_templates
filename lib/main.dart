@@ -1,35 +1,33 @@
-
-// import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter_templates/hive_box_constant.dart';
+import 'package:hive_flutter_templates/main_screen.dart';
 
-import 'main_screen.dart';
+Future main() async {
+  //It is used so that void main function can be intiated after successfully intialization of data
+  WidgetsFlutterBinding.ensureInitialized();
+//To intialise the hive database
+  await Hive.initFlutter();
 
-Future<void> main() async {  
-  //  var path = Directory.current.path;
+  //To open the user hive box
+  await Hive.openBox(userHiveBox);
 
-  //  Hive.init(path);
-     Hive.init(null);
-  // await Hive.openBox('testBox');
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Hive Local Storage Template',
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Hive Template GFG',
       theme: ThemeData(
-      
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
+        primarySwatch: Colors.green,
       ),
       home: const MainScreen(),
     );
   }
 }
-
 
