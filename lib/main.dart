@@ -12,7 +12,7 @@ Future main() async {
   // Hive.registerAdapter(PostModelAdapter());
 
 //Open Box for Post model
-   await Hive.openBox<PostModelAdapter>("postBox");
+  await Hive.openBox<PostModelAdapter>("postBox");
   //To open the user hive box
   await Hive.openBox(userHiveBox);
 
